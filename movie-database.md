@@ -51,7 +51,7 @@ However, and this is important to understand, we will _not_ create a front end i
 * with express, create a server, and make it listen on a port of your choice \(e.g, `3000`\)
 * make it so this express server, when receiving an url, answers `ok`
 * test your server by running `npm run dev`
-* commit \("step 2"\)
+* commit \("step 2"\)4
 
 ## Step 3 - Create an express simple API
 
