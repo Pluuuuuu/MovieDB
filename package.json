@@ -1,0 +1,28 @@
+{
+  "name": "mary",
+  "version": "1.0.1",
+  "description": "test",
+  "main": "index.js",
+  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+      "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pluuuuuu/MovieDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pluuuuuu/MovieDB/issues"
+  },
+  "homepage": "https://github.com/Pluuuuuu/MovieDB#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+  
+}
