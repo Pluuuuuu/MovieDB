@@ -48,3 +48,37 @@ app.get('/time', (req, res) => {
         message: formattedTime
     });
 });
+//step 4
+// /hello/<ID> is invoked, answers with: {status:200, message:"Hello, <ID>"}, where <ID> may be anything the user wanted to pass. The user may also not pass anything.
+app.get('/hello/:id?', (req, res) => {
+    // Route parameters: are placeholders in the URL path that capture dynamic values. They are defined using : in the route. (optional with ?)
+    //using ? it means id presence isnt mandotory
+    const id = req.params.id || "stranger"; //req.params: This object contains the route parameters passed in the URL.
+    // Default to "stranger" if no ID is provided // let result = expression1 || expression2; IF EXP 1 TRUE, RETURN IT, ELSE RETURN ESP 2
+    res.status(200).json({
+        status: 200,
+        message: `Hello ${id}`
+    });
+});
+
+
+//SEARCH
+app.get('/search', (req, res) => {
+    //Query parameters are key-value pairs appended to the URL after a ?. They are used to pass optional information to the server. (always optional)
+    const searchQuery = req.query.s;
+// /search?s=example, searchQuery would be "example". (they are separated by &)
+    if (searchQuery) { //if s exists
+        res.status(200).json({
+            status: 200,
+            message: "ok",
+            data: searchQuery
+        });
+    } else {
+        res.status(500).json({
+            status: 500,
+            error: true,
+            message: "you have to provide a search"
+        });
+    }
+});
+
