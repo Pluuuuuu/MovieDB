@@ -82,3 +82,35 @@ app.get('/search', (req, res) => {
     }
 });
 
+//5
+const movies = [
+    { title: 'Jaws', year: 1975, rating: 8 },
+    { title: 'Avatar', year: 2009, rating: 7.8 },
+    { title: 'Brazil', year: 1985, rating: 8 },
+    { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
+];
+
+// Routes
+//add
+app.get('/movies/create', (req, res) => {
+    res.json({ status: 200, message: 'Create movie route placeholder' });
+});
+
+app.get('/movies/read', (req, res) => { //answers with the list of mobies'
+
+    res.json({ status: 200, data: movies });
+});
+
+app.get('/movies/update', (req, res) => {
+    res.json({ status: 200, message: 'Update movie route placeholder' });
+});
+
+app.get('/movies/delete', (req, res) => {
+    res.json({ status: 200, message: 'Delete movie route placeholder' });
+});
+/*
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+}); 
+*/
