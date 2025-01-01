@@ -173,3 +173,39 @@ app.get('/movies/read/id/:id', (req, res) => {
         });
     }
 });
+
+//8
+//isNaN() function in JavaScript is used to determine whether a value is not a number. It returns: true if the value is not a number. false if the value is a number.
+//parseFloat converts string into float
+//paraint converts string into int
+app.get('/movies/add', (req, res) => {
+    const { title, year, rating } = req.query;
+
+    // Validation: Check if title and year are provided and year is valid
+    if (!title || !year || isNaN(year) || year.length !== 4) {
+        return res.status(403).json({
+            status: 403,
+            error: true,
+            message: "You cannot create a movie without providing a title and a valid year"
+        });
+    }
+
+    // Assign a default rating if not provided
+    const movieRating = rating ? parseFloat(rating) : 4;
+
+    // Create the new movie object
+    const newMovie = {
+        title,
+        year: parseInt(year), // Convert year to a number
+        rating: movieRating
+    };
+
+    // Add the new movie to the array
+    movies.push(newMovie);
+
+    // Respond with the updated movie list
+    res.status(200).json({
+        status: 200,
+        data: movies
+    });
+});
