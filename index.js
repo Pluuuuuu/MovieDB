@@ -209,3 +209,31 @@ app.get('/movies/add', (req, res) => {
         data: movies
     });
 });
+
+//9 // didnt work
+app.delete('/movies/delete/:id', (req, res) => {
+    const id = parseInt(req.params.id); // Convert the ID from the URL to a number
+
+    // Check if the ID is valid
+    if (id >= 0 && id < movies.length) {
+        // Remove the movie using splice
+        const deletedMovie = movies.splice(id, 1); // Removes the movie at index 'id'
+
+        // Respond with the updated movie list
+        res.status(200).json({
+            status: 200,
+            message: "Movie deleted successfully",
+            deletedMovie: deletedMovie[0], // Send the details of the deleted movie // deletedMovie[0]: Accesses the single deleted movie object.
+            data: movies // Send the updated movies list
+        });
+    } else {
+        // If the ID is invalid or does not exist
+        res.status(404).json({
+            status: 404,
+            error: true,
+            message: `The movie with ID ${id} does not exist`
+        });
+    }
+});
+
+//10 
