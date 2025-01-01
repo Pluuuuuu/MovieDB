@@ -114,3 +114,44 @@ app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 }); 
 */
+
+//step 6
+//asc by date
+/*The .sort() function compares two items (e.g., a and b) in the array. It orders them based on:
+
+Negative return value: a comes before b.
+Zero return value: Order of a and b remains unchanged.
+Positive return value: a comes after b.
+The subtraction logic determines the order:
+
+a - b → Sorts in ascending order.
+b - a → Sorts in descending order.
+*/
+app.get('/movies/read/by-date', (req, res) => {
+    //[...movies]: This creates a shallow copy of the movies array to ensure the original array is not modified by the sorting operation.
+    const sortedMovies = [...movies].sort((a, b) => a.year - b.year); //Subtracts b.year from a.year: Negative: a comes first. Positive: b comes first
+    res.status(200).json({
+        status: 200,
+        data: sortedMovies
+    });
+});
+
+//ORDERED BY RATING, where the highest rating is at the top.
+app.get('/movies/read/by-rating', (req, res) => {
+    //[...movies]: This creates a shallow copy of the movies array to ensure the original array is not modified by the sorting operation.
+    const sortedMovies = [...movies].sort((a, b) => b.rating - a.rating); 
+    res.status(200).json({
+        status: 200,
+        data: sortedMovies
+    });
+});
+
+//<MOVIES> is the list of movies ORDERED BY TITLE
+app.get('/movies/read/by-title', (req, res) => {
+    //-1: If string1 comes before string2 in the sort order. 0: If string1 and string2 are equivalent. 1: If string1 comes after string2 in the sort order.
+    const sortedMovies = [...movies].sort((a, b) => a.title.localeCompare(b.title));
+    res.status(200).json({
+        status: 200,
+        data: sortedMovies
+    });
+});
