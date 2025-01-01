@@ -155,3 +155,21 @@ app.get('/movies/read/by-title', (req, res) => {
         data: sortedMovies
     });
 });
+//step 7
+app.get('/movies/read/id/:id', (req, res) => {
+    const id = parseInt(req.params.id); // Get the ID from the URL and convert to number (initailly it will be string)
+
+    // Check if the ID is valid and within the array bounds
+    if (id >= 0 && id < movies.length) {
+        res.status(200).json({
+            status: 200,
+            data: movies[id]
+        });
+    } else {
+        res.status(404).json({
+            status: 404,
+            error: true, //actual 404 status code.
+            message: `The movie with ID ${id} does not exist`
+        });
+    }
+});
